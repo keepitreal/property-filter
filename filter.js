@@ -7,7 +7,6 @@ function propertyFilter(content, propsToRemove) {
         var value = content[current];
 
         if (propsToRemove.indexOf(current) === -1) {
-            
             prev[current] = content[current];
         }
 
