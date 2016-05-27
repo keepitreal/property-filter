@@ -1,0 +1,15 @@
+{
+    "foo": "bar",
+    "bar": "foo",
+    "bax": {
+        "quz": "wut",
+        "id": "who",
+        "yoo": {
+            "red": "knoc",
+            "id": "w0t"
+        }
+    },
+    "id": "yof",
+    "hoo": null,
+    "yo": {}
+}
