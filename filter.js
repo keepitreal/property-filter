@@ -2,13 +2,12 @@ var fs = require('fs');
 var contents = fs.readFileSync('input.json');
 var jsonContent = JSON.parse(contents);
 
-function propertyFilter(content) {
-    var propsToRemove = Array.prototype.slice.call(arguments, 1, arguments.length);
-
+function propertyFilter(content, propsToRemove) {
     return Object.keys(content).reduce(function(prev, current) {
         var value = content[current];
 
-        if (!isObject(value) && propsToRemove.indexOf(current) === -1) {
+        if (propsToRemove.indexOf(current) === -1) {
+            
             prev[current] = content[current];
         }
 
@@ -24,7 +23,12 @@ function isObject(value) {
     return typeof value === 'object' && value !== null;
 }
 
-var result = propertyFilter(jsonContent, 'id', 'foo');
+function filter(obj) {
+    var propsToRemove = Array.prototype.slice.call(arguments, 1, arguments.length);
+    return propertyFilter(obj, propsToRemove);
+}
+
+var result = filter(jsonContent, 'id', 'foo');
 
 console.log('result: ');
 console.log(result);
