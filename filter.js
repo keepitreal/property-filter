@@ -10,7 +10,13 @@ function propertyFilter(content, propsToRemove) {
             prev[current] = content[current];
         }
 
-        if (isObject(value)) {
+        if (Array.isArray(value)) {
+            prev[current] = value.map(function(ob) {
+                return propertyFilter(ob, propsToRemove);
+            });
+        }
+
+        if (isObject(value) && !Array.isArray(value)) {
             prev[current] = propertyFilter(value, propsToRemove);
         }
 
